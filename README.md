@@ -2,7 +2,7 @@
 
 PureScript wrapper of simplex noise (npm package simplex-noise)
 
-## Installation
+## Own Project Setup
 
 You'll need an existing package.json for this to work:
 
