@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "devDependencies": {
+    "purescript": "^0.14.5",
+    "purescript-language-server": "^0.16.1",
+    "purty": "^7.0.0",
+    "spago": "^0.19.2"
+  },
+  "scripts": {},
+  "dependencies": {
+    "simplex-noise": "^3.0.0"
+  }
+}
