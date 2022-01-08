@@ -8,6 +8,6 @@
   },
   "scripts": {},
   "dependencies": {
-    "simplex-noise": "^3.0.0"
+    "open-simplex-noise": "^2.5.0"
   }
 }
