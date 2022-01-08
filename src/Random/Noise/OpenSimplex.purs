@@ -1,4 +1,4 @@
-module Random.Noise.OpenSimplex where
+module Random.Noise.OpenSimplex (makeNoise2D) where
 
 import Data.Function.Uncurried (Fn1, Fn2, runFn1, runFn2)
 
