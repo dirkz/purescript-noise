@@ -51,8 +51,8 @@ testMovingY =
 
 main ∷ Effect Unit
 main = do
-  testIdemPotenceInXY
   testIdemPotenceInSeed
+  testIdemPotenceInXY
   testChangingSeed
   testMovingX
   testMovingY
