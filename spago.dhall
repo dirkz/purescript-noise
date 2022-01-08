@@ -11,7 +11,7 @@ When creating a new Spago project, you can use
 to generate this file without the comments in this block.
 -}
 { name = "noise"
-, dependencies = [ "console", "effect", "functions", "prelude", "psci-support" ]
+, dependencies = [ "effect", "functions", "prelude", "psci-support" ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs" ]
 }
