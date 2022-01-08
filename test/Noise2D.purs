@@ -9,9 +9,7 @@ import Random.Noise.OpenSimplex (makeNoise2D)
 import Test.QuickCheck (quickCheckGen)
 
 randomNoise2D :: forall m. Bind m => MonadGen m => m (Number -> Number -> Number)
-randomNoise2D = do
-  n <- genFloat64
-  pure $ makeNoise2D n
+randomNoise2D = makeNoise2D <$> genFloat64
 
 testIdemPotence ∷ Effect Unit
 testIdemPotence =
