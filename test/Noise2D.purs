@@ -5,8 +5,18 @@ import Effect (Effect)
 import Random.Noise.OpenSimplex (makeNoise2D)
 import Test.QuickCheck (quickCheck)
 
-testIdemPotence ∷ Effect Unit
-testIdemPotence =
+testIdemPotenceInSeed ∷ Effect Unit
+testIdemPotenceInSeed =
+  quickCheck \seed x y ->
+    let
+      noise1 = makeNoise2D seed
+
+      noise2 = makeNoise2D seed
+    in
+      noise1 x y == noise2 x y
+
+testIdemPotenceInXY ∷ Effect Unit
+testIdemPotenceInXY =
   quickCheck \seed x y ->
     let
       noise2d = makeNoise2D seed
@@ -41,7 +51,8 @@ testMovingY =
 
 main ∷ Effect Unit
 main = do
-  testIdemPotence
+  testIdemPotenceInXY
+  testIdemPotenceInSeed
   testChangingSeed
   testMovingX
   testMovingY
