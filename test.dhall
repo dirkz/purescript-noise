@@ -2,5 +2,5 @@ let conf = ./spago.dhall
 
 in conf // {
   sources = conf.sources # [ "test/**/*.purs" ],
-  dependencies = conf.dependencies # [ "quickcheck", "arraybuffer", "float32" ]
+  dependencies = conf.dependencies # [ "quickcheck", "arraybuffer" ]
 }
