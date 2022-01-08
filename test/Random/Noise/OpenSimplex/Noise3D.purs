@@ -49,6 +49,14 @@ testMovingY =
     in
       noise x y1 z /= noise x y2 z <?> "testMovingY"
 
+testMovingZ ∷ Effect Unit
+testMovingZ =
+  quickCheck \seed x y z1 z2 ->
+    let
+      noise = makeNoise3D seed
+    in
+      noise x y z1 /= noise x y z2 <?> "testMovingZ"
+
 main ∷ Effect Unit
 main = do
   testIdemPotenceInSeed
@@ -56,3 +64,4 @@ main = do
   testChangingSeed
   testMovingX
   testMovingY
+  testMovingZ
