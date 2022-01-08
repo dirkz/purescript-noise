@@ -1,6 +1,6 @@
-# purescript-open-simplex-noise
+# purescript-noise
 
-PureScript wrapper of open simplex noise (npm package open-simplex-noise)
+PureScript wrapper around noise functions.
 
 ## Own Project Setup
 
