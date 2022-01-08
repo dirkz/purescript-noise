@@ -19,9 +19,9 @@ testIdemPotenceInXY ∷ Effect Unit
 testIdemPotenceInXY =
   quickCheck \seed x y ->
     let
-      noise2d = makeNoise2D seed
+      noise = makeNoise2D seed
     in
-      noise2d x y == noise2d x y
+      noise x y == noise x y
 
 testChangingSeed ∷ Effect Unit
 testChangingSeed =
@@ -37,17 +37,17 @@ testMovingX ∷ Effect Unit
 testMovingX =
   quickCheck \seed x1 x2 y ->
     let
-      noise2d = makeNoise2D seed
+      noise = makeNoise2D seed
     in
-      noise2d x1 y /= noise2d x2 y
+      noise x1 y /= noise x2 y
 
 testMovingY ∷ Effect Unit
 testMovingY =
   quickCheck \seed x y1 y2 ->
     let
-      noise2d = makeNoise2D seed
+      noise = makeNoise2D seed
     in
-      noise2d x y1 /= noise2d x y2
+      noise x y1 /= noise x y2
 
 main ∷ Effect Unit
 main = do
