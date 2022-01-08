@@ -13,7 +13,7 @@ testIdemPotenceInSeed =
 
       noise2 = makeNoise2D seed
     in
-      noise1 x y == noise2 x y
+      noise1 x y == noise2 x y <?> "testIdemPotenceSeed"
 
 testIdemPotenceInXY ∷ Effect Unit
 testIdemPotenceInXY =
@@ -39,7 +39,7 @@ testMovingX =
     let
       noise = makeNoise2D seed
     in
-      noise x1 y /= noise x2 y
+      noise x1 y /= noise x2 y <?> "testMovingX"
 
 testMovingY ∷ Effect Unit
 testMovingY =
@@ -47,7 +47,7 @@ testMovingY =
     let
       noise = makeNoise2D seed
     in
-      noise x y1 /= noise x y2
+      noise x y1 /= noise x y2 <?> "testMovingY"
 
 main ∷ Effect Unit
 main = do
