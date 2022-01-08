@@ -15,8 +15,8 @@ testIdemPotenceInSeed =
     in
       noise1 x y z w == noise2 x y z w <?> "testIdemPotenceSeed"
 
-testIdemPotenceInXY ∷ Effect Unit
-testIdemPotenceInXY =
+testIdemPotence ∷ Effect Unit
+testIdemPotence =
   quickCheck \seed x y z w ->
     let
       noise = makeNoise4D seed
@@ -68,7 +68,7 @@ testMovingW =
 main ∷ Effect Unit
 main = do
   testIdemPotenceInSeed
-  testIdemPotenceInXY
+  testIdemPotence
   testChangingSeed
   testMovingX
   testMovingY
