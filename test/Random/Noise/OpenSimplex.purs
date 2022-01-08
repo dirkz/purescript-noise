@@ -1,4 +1,4 @@
-module Test.Noise2D (main) where
+module Test.Random.Noise.OpenSimplex (main) where
 
 import Prelude
 import Effect (Effect)
