@@ -1,15 +1,13 @@
 module Test.Random.Noise.OpenSimplex (main) where
 
 import Prelude
-
 import Effect (Effect)
 import Random.Noise.OpenSimplex (makeNoise2D)
-import Test.BigNumber (BigNumber(..))
 import Test.QuickCheck (quickCheck, (<?>))
 
 testIdemPotenceInSeed ∷ Effect Unit
 testIdemPotenceInSeed =
-  quickCheck \(BigNumber seed) x y ->
+  quickCheck \seed x y ->
     let
       noise1 = makeNoise2D seed
 
@@ -19,7 +17,7 @@ testIdemPotenceInSeed =
 
 testIdemPotenceInXY ∷ Effect Unit
 testIdemPotenceInXY =
-  quickCheck \(BigNumber seed) x y ->
+  quickCheck \seed x y ->
     let
       noise = makeNoise2D seed
     in
@@ -27,7 +25,7 @@ testIdemPotenceInXY =
 
 testChangingSeed ∷ Effect Unit
 testChangingSeed =
-  quickCheck \(BigNumber seed1) (BigNumber seed2) x y ->
+  quickCheck \seed1 seed2 x y ->
     let
       noise1 = makeNoise2D seed1
 
@@ -37,7 +35,7 @@ testChangingSeed =
 
 testMovingX ∷ Effect Unit
 testMovingX =
-  quickCheck \(BigNumber seed) x1 x2 y ->
+  quickCheck \seed x1 x2 y ->
     let
       noise = makeNoise2D seed
     in
@@ -45,7 +43,7 @@ testMovingX =
 
 testMovingY ∷ Effect Unit
 testMovingY =
-  quickCheck \(BigNumber seed) x y1 y2 ->
+  quickCheck \seed x y1 y2 ->
     let
       noise = makeNoise2D seed
     in
