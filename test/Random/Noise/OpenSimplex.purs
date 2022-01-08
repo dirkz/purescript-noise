@@ -1,10 +1,11 @@
 module Test.Random.Noise.OpenSimplex (main) where
 
 import Prelude
+
 import Effect (Effect)
 import Random.Noise.OpenSimplex (makeNoise2D)
 import Test.BigNumber (BigNumber(..))
-import Test.QuickCheck (quickCheck)
+import Test.QuickCheck (quickCheck, (<?>))
 
 testIdemPotenceInSeed ∷ Effect Unit
 testIdemPotenceInSeed =
@@ -32,7 +33,7 @@ testChangingSeed =
 
       noise2 = makeNoise2D seed2
     in
-      noise1 x y == noise2 x y
+      noise1 x y /= noise2 x y <?> "testChangingSeed " <> show seed1 <> " " <> show seed2
 
 testMovingX ∷ Effect Unit
 testMovingX =
