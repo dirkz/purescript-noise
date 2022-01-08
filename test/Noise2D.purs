@@ -1,47 +1,26 @@
 module Test.Noise2D (main) where
 
 import Prelude
-import Data.Int (toNumber)
+
+import Control.Monad.Gen (class MonadGen)
+import Data.ArrayBuffer.Typed.Gen (genFloat64)
 import Effect (Effect)
-import Random.LCG (randomSeed, unSeed)
 import Random.Noise.OpenSimplex (makeNoise2D)
-import Test.QuickCheck (quickCheck)
+import Test.QuickCheck (quickCheckGen)
 
-testSameSeed ∷ Effect Unit
-testSameSeed = do
-  seed <- randomSeed
-  let
-    int = unSeed seed
+randomNoise2D :: forall m. Bind m => MonadGen m => m (Number -> Number -> Number)
+randomNoise2D = do
+  n <- genFloat64
+  pure $ makeNoise2D n
 
-    num = toNumber int
-  noise2d <- makeNoise2D num
-  quickCheck \x y ->
-    noise2d x y == noise2d x y
-
-testSameSeedDifferentX ∷ Effect Unit
-testSameSeedDifferentX = do
-  seed <- randomSeed
-  let
-    int = unSeed seed
-
-    num = toNumber int
-  noise2d <- makeNoise2D num
-  quickCheck \x1 x2 y ->
-    noise2d x1 y /= noise2d x2 y
-
-testSameSeedDifferentY ∷ Effect Unit
-testSameSeedDifferentY = do
-  seed <- randomSeed
-  let
-    int = unSeed seed
-
-    num = toNumber int
-  noise2d <- makeNoise2D num
-  quickCheck \x y1 y2 ->
-    noise2d x y1 /= noise2d x y2
+testIdemPotence ∷ Effect Unit
+testIdemPotence =
+  quickCheckGen $ do
+    noise2d <- randomNoise2D
+    x <- genFloat64
+    y <- genFloat64
+    pure $ noise2d x y == noise2d x y
 
 main ∷ Effect Unit
 main = do
-  testSameSeed
-  testSameSeedDifferentX
-  testSameSeedDifferentY
+  testIdemPotence
